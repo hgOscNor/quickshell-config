@@ -13,7 +13,7 @@ import "notifications"
 import "theme-switcher"
 import "wallpaper"
 import "osd"
-import "monitor-manager"
+// import "monitor-manager"
 import "idle-inhibitor"
 
 Scope {
@@ -21,7 +21,7 @@ Scope {
   Bar { theme: ts.theme }
   AppLauncher { theme: ts.theme }
   NotificationPopup { theme: ts.theme }
-  WallpaperManager { theme: ts.theme }
+  // WallpaperManager { theme: ts.theme }
   OSD { theme: ts.theme }
   MonitorManager { theme: ts.theme }
   CaffeineToggle { theme: ts.theme }
