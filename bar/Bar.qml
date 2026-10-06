@@ -514,8 +514,8 @@ Scope {
                 }
               }
             }
-
-            // Temperature
+          }
+          // Temperature
           //   Rectangle {
           //     height: 24
           //     width: tempContent.width + 12
@@ -545,7 +545,7 @@ Scope {
           //       }
           //     }
           //   }
-          }
+        
 
           // System Tray
           // There's an issue that some tray not display correctly.
