@@ -21,8 +21,8 @@ Scope {
   Bar { theme: ts.theme }
   AppLauncher { theme: ts.theme }
   NotificationPopup { theme: ts.theme }
-  // WallpaperManager { theme: ts.theme }
+  WallpaperManager { theme: ts.theme }
   OSD { theme: ts.theme }
-  MonitorManager { theme: ts.theme }
+  // MonitorManager { theme: ts.theme }
   CaffeineToggle { theme: ts.theme }
 }
