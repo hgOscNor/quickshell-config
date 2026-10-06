@@ -449,6 +449,7 @@ Scope {
               width: netContent.width + 12
               radius: 12
               color: root.theme.bgSurface
+              visible: SystemInfo.networkType !== "ethernet"
               Accessible.role: Accessible.StaticText
               Accessible.name: {
                 if (SystemInfo.networkType === "ethernet") return "Network: Ethernet"
@@ -488,6 +489,7 @@ Scope {
               width: battContent.width + 12
               radius: 12
               color: root.theme.bgSurface
+              visible: SystemInfo.batteryAvailable
               Accessible.role: Accessible.StaticText
               Accessible.name: "Battery: " + SystemInfo.batteryLevel
 
@@ -514,35 +516,35 @@ Scope {
             }
 
             // Temperature
-            Rectangle {
-              height: 24
-              width: tempContent.width + 12
-              radius: 12
-              color: root.theme.bgSurface
-              Accessible.role: Accessible.StaticText
-              Accessible.name: "Temperature: " + SystemInfo.temperature
+          //   Rectangle {
+          //     height: 24
+          //     width: tempContent.width + 12
+          //     radius: 12
+          //     color: root.theme.bgSurface
+          //     Accessible.role: Accessible.StaticText
+          //     Accessible.name: "Temperature: " + SystemInfo.temperature
 
-              Row {
-                id: tempContent
-                anchors.centerIn: parent
-                spacing: 6
+          //     Row {
+          //       id: tempContent
+          //       anchors.centerIn: parent
+          //       spacing: 6
 
-                Text {
-                  anchors.verticalCenter: parent.verticalCenter
-                  text: "󰔏"
-                  color: root.theme.accentRed
-                  font.pixelSize: 14
-                  font.family: root.font
-                }
-                Text {
-                  anchors.verticalCenter: parent.verticalCenter
-                  text: SystemInfo.temperature
-                  color: root.theme.textPrimary
-                  font.pixelSize: 11
-                  font.family: root.font
-                }
-              }
-            }
+          //       Text {
+          //         anchors.verticalCenter: parent.verticalCenter
+          //         text: "󰔏"
+          //         color: root.theme.accentRed
+          //         font.pixelSize: 14
+          //         font.family: root.font
+          //       }
+          //       Text {
+          //         anchors.verticalCenter: parent.verticalCenter
+          //         text: SystemInfo.temperature
+          //         color: root.theme.textPrimary
+          //         font.pixelSize: 11
+          //         font.family: root.font
+          //       }
+          //     }
+          //   }
           }
 
           // System Tray

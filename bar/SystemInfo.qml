@@ -15,6 +15,7 @@ Singleton {
   property string batteryLevel: "0%"
   property string batteryIcon: "󰂎"
   property bool batteryCharging: false
+  property bool batteryAvailable: false
   property string temperature: "0°C"
 
   // CPU Usage
@@ -64,7 +65,7 @@ Singleton {
   // Battery
   Process {
     id: batteryProc
-    command: ["sh", "-c", "printf '%s\\n%s' \"$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo '99')\" \"$(cat /sys/class/power_supply/BAT*/status 2>/dev/null || echo 'Discharging')\""]
+    command: ["sh", "-c", "battery=$(find /sys/class/power_supply -maxdepth 1 -type d -name 'BAT*' | head -1); if [ -n \"$battery\" ]; then printf '%s\\n%s' \"$(cat \"$battery/capacity\")\" \"$(cat \"$battery/status\")\"; else printf '0\\nUnavailable'; fi"]
     running: true
 
     stdout: StdioCollector {
@@ -73,6 +74,7 @@ Singleton {
         const level = parseInt(lines[0]) || 0
         const status = (lines[1] || "Discharging").trim()
 
+        root.batteryAvailable = status !== "Unavailable"
         root.batteryLevelRaw = level
         root.batteryLevel = level + "%"
         root.batteryCharging = status === "Charging"
