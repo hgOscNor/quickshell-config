@@ -1,4 +1,4 @@
-# my quickshell config
+# my quickshell config forked from doannc2212 config
 a personal Hyprland desktop config built with [Quickshell](https://quickshell.outfoxxed.me/). status bar, app launcher, notification daemon, OSD, wallpaper manager, and a theme switcher with 206 themes. each piece is its own module and works independently, so feel free to grab only the parts you need.
 
 i hope it's helpful as a starting point or reference. if you have questions or ide
