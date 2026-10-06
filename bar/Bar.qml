@@ -107,43 +107,6 @@ Scope {
           anchors.verticalCenter: parent.verticalCenter
           spacing: 8
 
-          // Time
-          Rectangle {
-            height: 24
-            width: timeDate.width + 16
-            radius: 12
-            color: root.theme.bgSurface
-
-            Row {
-              id: timeDate
-              anchors.centerIn: parent
-              spacing: 8
-
-              Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: ""
-                color: root.theme.accentPrimary
-                font.pixelSize: 14
-                font.family: root.font
-              }
-
-              Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: Time.timeString
-                color: root.theme.textPrimary
-                font.pixelSize: 12
-                font.family: root.font
-              }
-
-              Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: Time.dateString
-                color: root.theme.textSecondary
-                font.pixelSize: 12
-                font.family: root.font
-              }
-            }
-          }
 
           // Workspaces
           Row {
@@ -258,24 +221,62 @@ Scope {
           }
         }
 
-        // Center section: Window Title (truly centered in bar)
-        Item {
-          anchors.centerIn: parent
-          height: parent.height
-          width: Math.max(0, parent.width - 2 * Math.max(leftSection.width, rightSection.width) - 32)
-
-          Text {
-            Accessible.role: Accessible.StaticText
-            Accessible.name: "Active window: " + text
-            text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : ""
-            color: root.theme.textPrimary
-            font.pixelSize: 13
-            font.family: root.font
-            elide: Text.ElideRight
-            width: Math.min(implicitWidth, parent.width)
+        // Time
+          Rectangle {
+            height: 24
+            width: timeDate.width + 16
+            radius: 12
+            color: root.theme.bgSurface
             anchors.centerIn: parent
+
+            Row {
+              id: timeDate
+              anchors.centerIn: parent
+              spacing: 8
+
+              Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: ""
+                color: root.theme.accentPrimary
+                font.pixelSize: 14
+                font.family: root.font
+              }
+
+              Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: Time.timeString
+                color: root.theme.textPrimary
+                font.pixelSize: 12
+                font.family: root.font
+              }
+
+              Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: Time.dateString
+                color: root.theme.textSecondary
+                font.pixelSize: 12
+                font.family: root.font
+              }
+            }
           }
-        }
+        // Center section: Window Title (truly centered in bar)
+        // Item {
+        //   anchors.centerIn: parent
+        //   height: parent.height
+        //   width: Math.max(0, parent.width - 2 * Math.max(leftSection.width, rightSection.width) - 32)
+
+        //   Text {
+        //     Accessible.role: Accessible.StaticText
+        //     Accessible.name: "Active window: " + text
+        //     text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : ""
+        //     color: root.theme.textPrimary
+        //     font.pixelSize: 13
+        //     font.family: root.font
+        //     elide: Text.ElideRight
+        //     width: Math.min(implicitWidth, parent.width)
+        //     anchors.centerIn: parent
+        //   }
+        // }
 
         // Right section: System Info + System Tray
         Row {
