@@ -413,35 +413,35 @@ Scope {
             spacing: 4
 
             // CPU
-            Rectangle {
-              height: 24
-              width: cpuContent.width + 12
-              radius: 12
-              color: root.theme.bgSurface
-              Accessible.role: Accessible.StaticText
-              Accessible.name: "CPU: " + SystemInfo.cpuUsage
+            // Rectangle {
+            //   height: 24
+            //   width: cpuContent.width + 12
+            //   radius: 12
+            //   color: root.theme.bgSurface
+            //   Accessible.role: Accessible.StaticText
+            //   Accessible.name: "CPU: " + SystemInfo.cpuUsage
 
-              Row {
-                id: cpuContent
-                anchors.centerIn: parent
-                spacing: 6
+            //   Row {
+            //     id: cpuContent
+            //     anchors.centerIn: parent
+            //     spacing: 6
 
-                Text {
-                  anchors.verticalCenter: parent.verticalCenter
-                  text: "󰻠"
-                  color: root.theme.accentOrange
-                  font.pixelSize: 14
-                  font.family: root.font
-                }
-                Text {
-                  anchors.verticalCenter: parent.verticalCenter
-                  text: SystemInfo.cpuUsage
-                  color: root.theme.textPrimary
-                  font.pixelSize: 11
-                  font.family: root.font
-                }
-              }
-            }
+            //     Text {
+            //       anchors.verticalCenter: parent.verticalCenter
+            //       text: "󰻠"
+            //       color: root.theme.accentOrange
+            //       font.pixelSize: 14
+            //       font.family: root.font
+            //     }
+            //     Text {
+            //       anchors.verticalCenter: parent.verticalCenter
+            //       text: SystemInfo.cpuUsage
+            //       color: root.theme.textPrimary
+            //       font.pixelSize: 11
+            //       font.family: root.font
+            //     }
+            //   }
+            // }
 
             // Network
             Rectangle {
