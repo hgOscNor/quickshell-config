@@ -65,7 +65,7 @@ Singleton {
   // Battery
   Process {
     id: batteryProc
-    command: ["sh", "-c", "battery=$(find /sys/class/power_supply -maxdepth 1 -type d -name 'BAT*' | head -1); if [ -n \"$battery\" ]; then printf '%s\\n%s' \"$(cat \"$battery/capacity\")\" \"$(cat \"$battery/status\")\"; else printf '0\\nUnavailable'; fi"]
+    command: ["sh", "-c", "battery=$(upower -e 2>/dev/null | grep '/battery_BAT' | head -1); if [ -n \"$battery\" ]; then upower -i \"$battery\" 2>/dev/null | awk -F': *' '/percentage:/ {gsub(/%/, \"\", $2); level=$2} /state:/ {status=$2} END {if (level != \"\") printf \"%s\\n%s\", level, status; else printf \"0\\nUnavailable\"}'; else printf '0\\nUnavailable'; fi"]
     running: true
 
     stdout: StdioCollector {
@@ -77,7 +77,7 @@ Singleton {
         root.batteryAvailable = status !== "Unavailable"
         root.batteryLevelRaw = level
         root.batteryLevel = level + "%"
-        root.batteryCharging = status === "Charging"
+        root.batteryCharging = status.toLowerCase() === "charging"
 
         if (root.batteryCharging) root.batteryIcon = ""
         else if (level >= 90) root.batteryIcon = "󰁹"
