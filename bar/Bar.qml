@@ -293,6 +293,7 @@ Scope {
             color: root.theme.bgSurface
             
 
+
             RowLayout {
               id: trayIcons
               anchors.centerIn: parent
@@ -350,6 +351,127 @@ Scope {
             }
           }
 
+          Rectangle {
+            id: quickSettingsButton
+            height: 24
+            width: 120
+            radius: 12
+            color: root.theme.bgSurface
+
+            Text {
+              anchors.centerIn: parent
+              text: "Quick Settings"
+              color: root.theme.textPrimary
+              font.pixelSize: 14
+              font.family: root.font
+            }
+
+            MouseArea {
+              anchors.fill: parent
+              cursorShape: Qt.PointingHandCursor
+              onClicked: {
+                settingsMenu.visible = !settingsMenu.visible
+              }
+            }
+          }
+
+          PopupWindow {
+            id: settingsMenu
+            implicitWidth: 250
+            implicitHeight: 300
+            visible: false
+
+            anchor {
+              item: quickSettingsButton
+              edges: Edges.Bottom | Edges.Right
+              gravity: Edges.Bottom | Edges.Left
+            }
+
+            Rectangle {
+              anchors.fill: parent
+              anchors.margins: 1
+              color: root.theme.bgBase
+              radius: 8
+              border.color: root.theme.bgBorder
+              border.width: 1
+
+              Column {
+                anchors.fill: parent
+                anchors.margins: 15
+                spacing: 15
+
+                Text {
+                  text: "Quick Settings"
+                  color: root.theme.textMuted
+                  font.bold: true
+                  font.family: root.font
+                }
+
+                Rectangle {
+                  width: parent.width
+                  height: 40
+                  color: wifiMouse.containsMouse ? root.theme.bgHover : root.theme.bgSurface
+                  radius: 4
+
+                  Text {
+                    anchors.centerIn: parent
+                    text: "Wi-Fi: Connected"
+                    color: root.theme.textPrimary
+                    font.family: root.font
+                  }
+
+                  MouseArea {
+                    id: wifiMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                  }
+                }
+
+                Rectangle {
+                  width: parent.width
+                  height: 40
+                  color: bluetoothMouse.containsMouse ? root.theme.bgHover : root.theme.bgSurface
+                  radius: 4
+
+                  Text {
+                    anchors.centerIn: parent
+                    text: "Bluetooth: On"
+                    color: root.theme.textPrimary
+                    font.family: root.font
+                  }
+
+                  MouseArea {
+                    id: bluetoothMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                  }
+                }
+
+                Rectangle {
+                  width: parent.width
+                  height: 40
+                  color: powerMouse.containsMouse ? root.theme.bgHover : root.theme.bgSurface
+                  radius: 4
+
+                  Text {
+                    anchors.centerIn: parent
+                    text: "Power: Performance"
+                    color: root.theme.textPrimary
+                    font.family: root.font
+                  }
+
+                  MouseArea {
+                    id: powerMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                  }
+                }
+              }
+            }
+          }
 
           // Volume
           Rectangle {
@@ -618,6 +740,7 @@ Scope {
           // https://github.com/quickshell-mirror/quickshell/issues/26
           // https://github.com/quickshell-mirror/quickshell/pull/777
           
+
         }
       }
 
